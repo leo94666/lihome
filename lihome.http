@@ -1,0 +1,25 @@
+
+
+###
+
+###
+GET {{host}}/api/hello
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+
+
+###
+GET {{host}}/api/hello?id=1&key="太极"
+Accept: application/json
+
+###
+POST {{host}}/api/hello
+Content-Type: application/json
+
+{
+  "id": 1,
+  "key": "太极"
+}
+
+
