@@ -7,8 +7,8 @@ function layout({className, children}: { className: string, children: ReactNode 
     return (
         <div className={`${className}`}>
             <Head>
-                <title>欢迎来到Bagutree起始页</title>
-                <link rel="icon" href="../../public/favicon.ico"/>
+                <title>欢迎来到太极起始页</title>
+                <link rel="icon" href="favicon.ico"/>
             </Head>
             <main className="relative h-screen w-screen">
                 {children}
