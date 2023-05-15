@@ -76,14 +76,15 @@ function Index(props: Props) {
 
     const handleInputChange = (value: any) => {
         setContent(value.target.value)
-        if (value.target.value == "") {
-            setOpenSearchHistory(false)
-        } else {
-            setOpenSearchHistory(true)
-        }
+        setOpenSearchHistory(true)
     }
 
-    const handleKeyDown = (event: KeyboardEvent) => {
+    const handleInputFocus = (value: any) => {
+        setOpenSearchHistory(true)
+    }
+
+
+    const handleInputKeyDown = (event: KeyboardEvent) => {
         if (event.keyCode == 13) {
             handleSearch()
         }
@@ -99,11 +100,13 @@ function Index(props: Props) {
 
     let input: HTMLInputElement | null;
 
-    function handleBlur() {
+    function handleInputBlur() {
         setTimeout(() => {
             input?.focus()
-        }, 100)
+        }, 10)
     }
+
+
 
     return (
         <div className={`${className}`}>
@@ -148,8 +151,9 @@ function Index(props: Props) {
                         ref={el => input = el}
                         value={content}
                         onChange={handleInputChange}
-                        onKeyDown={handleKeyDown}
-                        onBlur={handleBlur}
+                        onKeyDown={handleInputKeyDown}
+                        onBlur={handleInputBlur}
+                        onFocus={handleInputFocus}
                         className="h-full p-2.5 w-full z-20 text-sm text-gray-900 focus:outline-0"
                         placeholder={placeholder} required/>
                 </div>
@@ -158,7 +162,7 @@ function Index(props: Props) {
                 </div>
             </div>
             <div className={"w-full"}>
-                <Menu open={openSearchHistory} handler={setOpenSearchHistory}>
+                <Menu open={openSearchHistory} handler={setOpenSearchHistory} allowHover={true}>
                     <MenuHandler>
                         <div className={"w-full"}></div>
                     </MenuHandler>
