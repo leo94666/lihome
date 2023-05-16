@@ -18,15 +18,21 @@ import {
 
 type Props = {
   className?: string;
-  show?: boolean;
+  toggle?: boolean;
 };
 
 function Index(props: Props) {
-  const { show = false, className = "pt-6 pr-10" } = props;
+  let { toggle = false, className = "pt-6 pr-10" } = props;
 
-  const [open, setOpen] = useState(show);
+  const [open, setOpen] = useState(true);
 
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
+  useEffect(() => {
+    setOpen(!open);
+  }, [toggle]);
 
   const data = [
     {
@@ -69,20 +75,20 @@ function Index(props: Props) {
   return (
     <div className={`${className}`}>
       <React.Fragment>
-        <Avatar
-          onClick={handleOpen}
-          variant="circular"
-          size="sm"
-          alt="太极"
-          className="flex items-center rounded-full lg:ml-auto border border-blue-500 hover:animate-spin"
-          src={"/taiji.svg"}
-        />
-
-        <Dialog open={open} handler={handleOpen} className="relative h-1/2 ">
+        <Dialog
+          size="xs"
+          open={open}
+          handler={handleOpen}
+          className="relative"
+          animate={{
+            mount: { scale: 1, y: 0 },
+            unmount: { scale: 0.9, y: -100 },
+          }}
+        >
           <DialogHeader className="text-center">
             太极起始页 配置中心
           </DialogHeader>
-          <DialogBody className="h-full m-0 p-0 mt-1 ">
+          <DialogBody divider className="h-full m-0 p-0 mt-1 ">
             <Tabs value="account" orientation="vertical">
               <TabsHeader
                 className="w-32 text-left bg-blue-gray-100 rounded-none p-0 m-0"
@@ -105,179 +111,12 @@ function Index(props: Props) {
                 {data.map(({ value, desc }) => (
                   <TabPanel key={value} value={value} className="py-0">
                     {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
-                    {desc}
                   </TabPanel>
                 ))}
               </TabsBody>
             </Tabs>
           </DialogBody>
-          <DialogFooter className="space-x-5 absolute bottom-0 right-0">
+          <DialogFooter className="space-x-5">
             <Button variant="outlined" color="red" onClick={handleOpen}>
               关闭
             </Button>
