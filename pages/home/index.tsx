@@ -6,6 +6,8 @@ import Profile from "@/components/profile";
 import Account from "@/pages/account";
 import SideBar from '@/components/layout/siderbar';
 import Setting from '@/components/setting';
+import dynamic from "next/dynamic";
+const Clock =  dynamic(()=> import('@/components/clock'),{ssr:false}) // 在SSR的时候不要渲染<DynamicImage />组件
 
 type Props = {
     className?: string
@@ -69,8 +71,15 @@ export const Index = (props: Props) => {
 
             <div className={`${className} h-full relative bg-gradient-to-r from-purple-400 via-pink-500 to-red-500`}>
                 {/* <SideBar/> */}
-                <Setting show={toggle}/>
-                <SearchBox onSearch={search} className={"absolute top-16 w-full md:top-1/4 md:w-1/3 md:left-1/3"}/>
+                <Setting/>
+
+                <div className={"absolute md:top-1/5 md:w-1/3 md:left-1/3"}>
+                    <Clock className={"text-5xl mx-auto"} format={"HH:MM:ss"}/>
+                    <Clock className={"text-1xl mx-auto p-2"} format={"yyyy年mm月dd日 dddd"}/>
+                    <SearchBox onSearch={search} className={"w-full"}/>
+                </div>
+
+
                 <Tabs className={"absolute top-1/3 w-1/2 left-1/4 md:w-1/2 md:left-1/4"} data={tabs}/>
                 <Account toggle={toggle}/>
             </div>

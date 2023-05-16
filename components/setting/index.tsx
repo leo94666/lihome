@@ -18,7 +18,7 @@ import {
 
 type Props = {
   className?: string;
-  show: boolean;
+  show?: boolean;
 };
 
 function Index(props: Props) {
