@@ -8,23 +8,14 @@ import {
     TabPanel,
 } from "@material-tailwind/react";
 import {useEffect, useState, WheelEvent} from "react";
+import {Category} from "@/components/tabs/model";
 
 type Props = {
     className?: string;
     data?: Category[];
 };
 
-type Category = {
-    id: number;
-    name: string;
-    labels: Label[];
-};
 
-type Label = {
-    id: number;
-    name: string;
-    url: string;
-};
 
 const Index = (props: Props) => {
     const {

@@ -2,18 +2,25 @@ import '@/styles/globals.css'
 import type {AppProps} from 'next/app'
 import {ThemeProvider} from "@material-tailwind/react";
 import {SessionProvider} from "next-auth/react";
+import * as url from "url";
 
 export default function App({Component, pageProps: {session, ...pageProps}}: AppProps) {
 
 
+    // @ts-ignore
     const customTheme = {
         comment: {
             theme:{},
             component:{},
             defaultProps: {},
             valid:{},
-            styles:{},
-            style:{}
+            styles:{
+                backgroundImage:"/background.png"
+
+            },
+            style:{
+                backgroundImage:"/background.png"
+            }
         }
     }
 

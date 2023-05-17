@@ -9,6 +9,8 @@ import Baidu from "@/components/icon/baidu/baidu";
 import Bing from "@/components/icon/bing/bing";
 import G360 from "@/components/icon/360/360";
 import Search from "@/components/icon/search/search";
+import dynamic from "next/dynamic";
+const Clock =  dynamic(()=> import('@/components/clock'),{ssr:false}) // 在SSR的时候不要渲染<DynamicImage />组件
 
 
 
@@ -109,7 +111,11 @@ function Index(props: Props) {
 
 
     return (
-        <div className={`${className}`}>
+        <div className={`${className} flex flex-col gap-3`}>
+            <div className={"flex-none justify-center items-center"}>
+                <Clock className={"text-5xl mx-auto text-gray-200"} format={"HH:MM:ss"}/>
+                <Clock className={"text-1xl mx-auto text-gray-200 p-2"} format={"yyyy年mm月dd日 dddd"}/>
+            </div>
             <div className={"bg-white rounded-full flex"}>
                 <div className="flex-none w-10 h-10 rounded-full hover:bg-gray-400" onMouseOver={() => {
                     setOpenSearchTypeMenu(true)

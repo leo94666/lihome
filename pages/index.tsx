@@ -15,8 +15,8 @@ export default function App() {
 
     return (
         <>
-            <Layout className="theme-light h-screen">
-                {/* <Home className={"h-screen"}/> */}
+            <Layout className=" h-screen">
+                 <Home className={"h-screen"}/>
                 
             </Layout>
         </>
