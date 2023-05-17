@@ -21,7 +21,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/scrollbar/index.js"],
   "exclude": ["node_modules"],
   "ts-node": {
     "compilerOptions": {

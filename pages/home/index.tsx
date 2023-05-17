@@ -6,6 +6,7 @@ import Profile from "@/components/profile";
 import Account from "@/components/wechat";
 import Avatar from '@/components/avatar';
 import dynamic from "next/dynamic";
+import { Tab } from '@material-tailwind/react';
 const Clock =  dynamic(()=> import('@/components/clock'),{ssr:false}) // 在SSR的时候不要渲染<DynamicImage />组件
 
 type Props = {
@@ -69,7 +70,6 @@ export const Index = (props: Props) => {
             </Head>
 
             <div className={`${className} h-full relative bg-gradient-to-r from-purple-400 via-pink-500 to-red-500`}>
-                {/* <SideBar/> */}
                 <Avatar/>
                 <div className={"absolute md:top-1/5 md:w-1/3 md:left-1/3"}>
                     <Clock className={"text-5xl mx-auto"} format={"HH:MM:ss"}/>
