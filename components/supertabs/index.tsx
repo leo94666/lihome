@@ -76,7 +76,7 @@ export default function Index(props: TabProps) {
     // @ts-ignore
     return (
         <div onWheel={handleWheelEvent} className="flex h-screen bg-transparent">
-            <div className="relative flex-none bg-gray-400">
+            <div className="relative flex-none bg-gray-400 opacity-50">
                 <div className="container flex justify-center items-center h-24">
                     <Avatar
                         variant="circular"
