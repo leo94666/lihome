@@ -16,8 +16,11 @@
     "production:build": "npx prisma generate && npx prisma migrate deploy && next build"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "@heroicons/react": "^2.0.18",
     "@material-tailwind/react": "^2.0.0",
+    "@mui/material": "^5.13.1",
     "@types/node": "20.1.2",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
