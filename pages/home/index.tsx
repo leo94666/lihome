@@ -39,12 +39,8 @@ export const Index = (props: Props) => {
         }, {
             id: 1, name: "开发", labels: [
                 {id: 0, name: "太极", url: ""},
-                {id: 0, name: "太极", url: ""},
-                {id: 0, name: "太极", url: ""},
-                {id: 0, name: "太极", url: ""},
-                {id: 0, name: "太极", url: ""},
-                {id: 0, name: "太极", url: ""},
-                {id: 0, name: "太极", url: ""},
+                {id: 1, name: "太极", url: ""},
+                {id: 2, name: "太极", url: ""}
             ]
         }, {
             id: 2, name: "咨询", labels: [

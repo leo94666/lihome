@@ -1,19 +1,22 @@
-import { useSession, signIn, signOut } from "next-auth/react"
+"use client";
+import {SessionProvider} from "next-auth/react";
+import {ReactNode} from "react";
+import AppBar from "./AppBar";
 
-export default function Component() {
-  const { data: session } = useSession()
-  if (session) {
+interface IProps {
+    children: ReactNode;
+}
+
+export default function RootLayout({children}: IProps) {
+    // @ts-ignore
     return (
-      <>
-        Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    )
-  }
-  return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
-  )
+
+        <div>
+            <SessionProvider>
+                <AppBar/>
+                <div className={"h-screen "}>{children}</div>
+            </SessionProvider>
+        </div>
+
+    );
 }
