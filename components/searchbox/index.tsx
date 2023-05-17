@@ -113,8 +113,8 @@ function Index(props: Props) {
     return (
         <div className={`${className} flex flex-col gap-3`}>
             <div className={"flex-none justify-center items-center"}>
-                <Clock className={"text-5xl mx-auto text-gray-200"} format={"HH:MM:ss"}/>
-                <Clock className={"text-1xl mx-auto text-gray-200 p-2"} format={"yyyy年mm月dd日 dddd"}/>
+                <Clock className={"text-5xl mx-auto"} format={"HH:MM:ss"}/>
+                <Clock className={"text-1xl mx-auto p-2"} format={"yyyy年mm月dd日 dddd"}/>
             </div>
             <div className={"bg-white rounded-full flex"}>
                 <div className="flex-none w-10 h-10 rounded-full hover:bg-gray-400" onMouseOver={() => {

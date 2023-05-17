@@ -66,7 +66,7 @@ export const Index = (props: Props) => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            <div className={`${className} h-full relative bg-[url('/background.png')]`}>
+            <div className={`${className} h-full relative bg-no-repeat bg-cover bg-[url('/background.png')]`}>
                 <SearchBox onSearch={search} className={"absolute w-full md:top-24 md:w-1/3 md:left-1/3"}/>
                 <SupeTabs data={tabs}/>
                 {/*<Tabs className={"absolute top-1/3 w-1/2 left-1/4 md:w-1/2 md:left-1/4"} data={tabs}/>*/}
