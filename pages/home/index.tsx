@@ -2,7 +2,7 @@ import * as React from 'react';
 import Head from "next/head";
 import SearchBox from "@/components/searchbox";
 import Tabs from "@/components/tabs";
-import SupeTabs from "@/components/supertabs";
+import SuperTabs from "@/components/supertabs";
 
 import Profile from "@/components/profile";
 import Account from "@/components/wechat";
@@ -66,9 +66,9 @@ export const Index = (props: Props) => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            <div className={`${className} h-full relative bg-no-repeat bg-cover bg-[url('/background.png')]`}>
+            <div className={`${className} h-full relative bg-no-repeat bg-cover bg-[url('https://bing.img.run/rand_uhd.php')]`}>
                 <SearchBox onSearch={search} className={"absolute w-full md:top-24 md:w-1/3 md:left-1/3"}/>
-                <SupeTabs data={tabs}/>
+                <SuperTabs data={tabs}/>
                 {/*<Tabs className={"absolute top-1/3 w-1/2 left-1/4 md:w-1/2 md:left-1/4"} data={tabs}/>*/}
             </div>
         </div>
