@@ -1,0 +1,47 @@
+import { Menu, Item, Separator, Submenu, useContextMenu } from 'react-contexify';
+import 'react-contexify/ReactContexify.css';
+import {MouseEvent, useEffect} from "react";
+
+
+type Props={
+    className?:string;
+    id:string;
+    onItemClick?:Function
+}
+function Index(props:Props) {
+
+    const {className,id,onItemClick}=props
+
+
+    const handleItemClick = ({ id, event, props }:{ id:string, event:Event, props:any}) => {
+        switch (id) {
+            case "add":
+                console.log(event, props)
+                break;
+            case "theme":
+                console.log(event, props);
+                break;
+            case "setting":
+                console.log(event, props);
+                break;
+        }
+        onItemClick(id)
+    }
+
+    return (
+        <div>
+            <Menu id={id}>
+                <Item id="add" onClick={handleItemClick}>添加图标</Item>
+                <Item id="theme" onClick={handleItemClick}>更换壁纸</Item>
+                <Separator />
+                <Item id="setting" onClick={handleItemClick}>设置</Item>
+                {/*<Submenu label="Foobar">*/}
+                {/*    <Item id="reload" onClick={handleItemClick}>Reload</Item>*/}
+                {/*    <Item id="something" onClick={handleItemClick}>Do something else</Item>*/}
+                {/*</Submenu>*/}
+            </Menu>
+        </div>
+    );
+}
+
+export default Index

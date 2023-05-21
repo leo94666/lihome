@@ -13,11 +13,15 @@ import {useCallback, useEffect, useRef} from "react";
 type TabProps = {
     children?: React.ReactNode;
     data?: Category[];
+    onClickQR?: Function;
+    onClickSetting?: Function;
 };
 
 export default function Index(props: TabProps) {
     const {
-        data
+        data,
+        onClickQR,
+        onClickSetting
     } = props;
 
     const [value, setValue] = React.useState(0);
@@ -26,27 +30,49 @@ export default function Index(props: TabProps) {
         setValue(newValue);
     };
 
-    
 
     function handleTabWheelEvent(event: WheelEvent) {
-        console.log("=======parent================"+event.deltaY)
+        console.log("=======parent================" + event.deltaY)
     }
 
     function handleLabelWheelEvent(event: WheelEvent) {
-        console.log("=======chi================"+event.deltaY)
+        event.stopPropagation()
+
     }
+
     let labelPanel = useRef(); // 这里就是获取ref绑定的那个DOM元素值
 
-    const divStyle = (): React.CSSProperties => ({
-        
-        
-      });
+
+    useEffect(() => {
+        if (labelPanel) {
+            // @ts-ignore
+            labelPanel.current.addEventListener("scroll", e => {
+                const {clientHeight, scrollHeight, scrollTop} = e.target;
+                const isBottom = scrollTop + clientHeight + 20 > scrollHeight;
+                const isTop = scrollTop + clientHeight + 20 > scrollHeight;
+
+                console.log(scrollTop, clientHeight, scrollHeight, isBottom);
+            });
+        }
+    }, []);
+
+    const handleQR = () => {
+        if (onClickQR){
+            onClickQR()
+        }
+    }
+    const handleSetting = () => {
+        if (onClickSetting){
+            onClickSetting()
+        }
+    }
+
+
     return (
-        <div  className="flex h-screen  bg-transparent" onWheel={handleTabWheelEvent}>
-            <div className="relative flex-none bg-gray-900 opacity-50">
+        <div className="flex h-screen " onWheel={handleTabWheelEvent}>
+            <div className="relative flex-none bg-gray-900 bg-opacity-50">
                 <div className="container flex justify-center items-center h-24">
                     <Avatar
-                        variant="circular"
                         size="md"
                         alt="太极"
                         className="rounded-full hover:animate-spin"
@@ -68,14 +94,14 @@ export default function Index(props: TabProps) {
                     <div
                         className={"w-full h-16 flex flex-col justify-center items-center"}
                     >
-                        <QrCodeIcon className={"w-8 h-8 text-white"}/>
+                        <QrCodeIcon className={"w-8 h-8 text-white"} onClick={handleQR}/>
                     </div>
                     <div
                         className={
                             "w-full h-16 flex flex-col justify-center items-center hover:animate-spin"
                         }
                     >
-                        <Cog6ToothIcon className={"w-8 h-8 text-white"}/>
+                        <Cog6ToothIcon className={"w-8 h-8 text-white"} onClick={handleSetting}/>
                     </div>
                     <div className={"w-full h-5"}></div>
                 </div>
@@ -89,9 +115,11 @@ export default function Index(props: TabProps) {
                                 "flex h-full w-full"
                             }
                         >
-                            <div ref={labelPanel} className="grid grid-cols-12 gap-0 mt-64 h-2/3 overflow-y-auto no-scrollbar" onWheel={handleLabelWheelEvent}>
+                            <div ref={labelPanel}
+                                 className="grid grid-cols-12 gap-0 mt-64 h-2/3 overflow-y-auto no-scrollbar"
+                                 onWheel={handleLabelWheelEvent}>
                                 {labels.map(({id, name: labelName, url}) => (
-                                        <Label key={id} title={labelName} url={url} className={""}></Label>
+                                    <Label key={id} title={labelName} url={url} className={""}></Label>
                                 ))}
                                 <Label key={id} title={"添加"} url={"https://files.codelife.cc/icons/add.svg"}></Label>
                             </div>
