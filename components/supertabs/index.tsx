@@ -68,6 +68,8 @@ export default function Index(props: TabProps) {
     }
 
 
+    // @ts-ignore
+    // @ts-ignore
     return (
         <div className="flex h-screen " onWheel={handleTabWheelEvent}>
             <div className="relative flex-none bg-gray-900 bg-opacity-50">

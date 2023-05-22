@@ -3,6 +3,7 @@ import Head from "next/head";
 import SearchBox from "@/components/searchbox";
 import Tabs from "@/components/tabs";
 import SuperTabs from "@/components/supertabs";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 import Profile from "@/components/profile";
 import Account from "@/components/wechat";
@@ -13,6 +14,7 @@ import Setting from "@/components/setting";
 import {useState} from "react";
 import RightMenu from "@/components/rightmenu";
 import {useContextMenu} from "react-contexify";
+import {signin} from "next-auth/core/routes";
 
 type Props = {
     className?: string
@@ -176,6 +178,10 @@ export const Index = (props: Props) => {
         }
     }
 
+    function handleQR() {
+
+    }
+
     return (
         <div>
             <Head>
@@ -186,7 +192,7 @@ export const Index = (props: Props) => {
             <div onContextMenu={handleContextMenu} className={`${className} h-full relative bg-no-repeat bg-cover bg-[url('https://bing.img.run/rand_uhd.php')] overflow-hidden`}>
                 <RightMenu id={"rightmenu"} onItemClick={handleItemClick}/>
                 <SearchBox onSearch={search} className={"absolute w-full md:top-24 md:w-1/3 md:left-1/3"}/>
-                <SuperTabs data={tabs} onClickSetting={handleSetting}/>
+                <SuperTabs data={tabs} onClickSetting={handleSetting} onClickQR={handleQR}/>
                 <Setting toggle={openSetting} />
             </div>
         </div>

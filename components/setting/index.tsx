@@ -8,7 +8,6 @@ import {
   DialogBody,
   DialogHeader,
   Button,
-  Avatar,
   Tabs,
   TabsHeader,
   TabsBody,
@@ -76,7 +75,7 @@ function Index(props: Props) {
     <div className={`${className}`}>
       <React.Fragment>
         <Dialog
-          size="xs"
+          size="lg"
           open={open}
           handler={handleOpen}
           className="relative"
@@ -89,7 +88,7 @@ function Index(props: Props) {
             太极起始页 配置中心
           </DialogHeader>
           <DialogBody divider className="h-full m-0 p-0 mt-1 ">
-            <Tabs value="account" orientation="vertical">
+            <Tabs value="account" orientation="vertical" id={"id"}>
               <TabsHeader
                 className="w-32 text-left bg-blue-gray-100 rounded-none p-0 m-0"
                 indicatorProps={{
