@@ -69,8 +69,8 @@ export default function Index(props: TabProps) {
 
 
     return (
-        <div className="flex h-screen " onWheel={handleTabWheelEvent}>
-            <div className="relative flex-none bg-gray-900 bg-opacity-50">
+        <div className="flex h-screen flex-row-reverse" onWheel={handleTabWheelEvent}>
+            <div className="relative flex-none  bg-gray-900 bg-opacity-50">
                 <div className="container flex justify-center items-center h-24">
                     <Avatar
                         size="md"
@@ -116,7 +116,7 @@ export default function Index(props: TabProps) {
                             }
                         >
                             <div ref={labelPanel}
-                                 className="grid grid-cols-12 gap-0 mt-64 h-2/3 overflow-y-auto no-scrollbar"
+                                 className="grid md:grid-cols-12 sm:grid-cols-6 gap-0 mt-64 h-2/3 overflow-y-auto no-scrollbar"
                                  onWheel={handleLabelWheelEvent}>
                                 {labels.map(({id, name: labelName, url}) => (
                                     <Label key={id} title={labelName} url={url} className={""}></Label>
