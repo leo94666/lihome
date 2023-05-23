@@ -1,25 +1,47 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type {NextApiRequest, NextApiResponse} from 'next'
-import {prisma} from "@/server/db/client"
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { prisma } from "@/server/db/client"
+import { Result, ResultFailure, ResultSuccess, Status } from '@/types/result'
+import { IsEmail, Length, MinLength, validate } from 'class-validator'
 
 
-type User={
-    name:string
+
+class QueryUserDto {
+    @Length(10, 20, {
+        message: '账号长度不规范!'
+    })
+    account: string;
+
+    @MinLength(6, {
+        message: '密码长度最短不低于6位!',
+    })
+    password: string
 }
 
-type Result<T> = {
-    code: number,
-    msg: string,
-    data: T
+type User = {
+    name: string
 }
+
+
 
 export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<Result<User>>
 ) {
-    if (req.method !== "Post") {
-        res.status(405).send({code: 405, msg: 'Only POST requests allowed', data: null})
+    console.log("method: ", req.method)
+    if (req.method !== "POST") {
+        res.status(405).send({ code: 405, msg: 'Only POST requests allowed', data: null })
         return
     }
-    res.status(200).json({code: 0, msg: 'Only POST requests allowed', data: {name:"li"}})
+    const { account, password } = req.body
+    const params = new QueryUserDto()
+    params.account = account
+    params.password = password
+    validate(params, { validationError: { target: false } }).then(errors => {
+        if (errors.length > 0) {
+            res.status(200).json(ResultFailure(Status.Validate, errors.at(1).constraints["minLength"]))
+        } else {
+            res.status(200).json(ResultSuccess({ name: "li" }))
+        }
+    })
 }
