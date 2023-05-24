@@ -31,7 +31,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "types/next-auth.d.ts"
+    "server/next-auth.d.ts"
   ],
   "exclude": [
     "node_modules"

@@ -7,14 +7,10 @@ import Layout from "@/components/layout/layout";
 import Home from "@/pages/home";
 import * as React from "react";
 import {useSession} from "next-auth/react";
-import { Axios } from 'axios';
+import axios from 'axios';
 
 
-const axios = Axios.create({
-    baseURL: 'http://localhost:3000/api'
-})
-
-
+axios.defaults.baseURL='http://localhost:3000/api'
 
 const inter = Inter({subsets: ['latin']})
 

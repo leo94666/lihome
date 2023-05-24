@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import { User } from "./intefaces";
+import { User } from "../types/intefaces";
 
 declare module "next-auth" {
   /**

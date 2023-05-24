@@ -13,9 +13,9 @@ export enum Status {
     Validate=1000
 }
 
-export interface Result<T> {
-    code: number,
-    msg: string,
+export class Result<T> {
+    code: number
+    msg: string
     data?: T
 }
 

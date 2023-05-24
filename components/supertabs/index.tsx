@@ -49,13 +49,13 @@ export default function Index(props: TabProps) {
     useEffect(() => {
         if (labelPanel) {
             // @ts-ignore
-            labelPanel.current.addEventListener("scroll", e => {
-                const {clientHeight, scrollHeight, scrollTop} = e.target;
-                const isBottom = scrollTop + clientHeight + 20 > scrollHeight;
-                const isTop = scrollTop + clientHeight + 20 > scrollHeight;
-
-                console.log(scrollTop, clientHeight, scrollHeight, isBottom);
-            });
+            // labelPanel.current.addEventListener("scroll", e => {
+            //     const {clientHeight, scrollHeight, scrollTop} = e.target;
+            //     const isBottom = scrollTop + clientHeight + 20 > scrollHeight;
+            //     const isTop = scrollTop + clientHeight + 20 > scrollHeight;
+            //
+            //     console.log(scrollTop, clientHeight, scrollHeight, isBottom);
+            // });
         }
     }, []);
 
