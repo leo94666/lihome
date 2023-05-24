@@ -24,8 +24,8 @@ POST http://localhost:3000/api/account
 Content-Type: application/json
 
 {
-  "account": "li",
-  "password": "113"
+  "email": "taiji@taiji.com",
+  "password": "1iiiiiii3"
 }
 
 

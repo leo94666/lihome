@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import type {AppProps} from 'next/app'
 import {ThemeProvider} from "@material-tailwind/react";
 import {SessionProvider} from "next-auth/react";
-import * as url from "url";
+import 'reflect-metadata';
 
 export default function App({Component, pageProps: {session, ...pageProps}}: AppProps) {
 

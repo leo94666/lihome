@@ -15,13 +15,16 @@ type TabProps = {
     data?: Category[];
     onClickQR?: Function;
     onClickSetting?: Function;
+    onClickAvatar?: Function;
+
 };
 
 export default function Index(props: TabProps) {
     const {
         data,
         onClickQR,
-        onClickSetting
+        onClickSetting,
+        onClickAvatar
     } = props;
 
     const [value, setValue] = React.useState(0);
@@ -67,13 +70,19 @@ export default function Index(props: TabProps) {
         }
     }
 
+    const handleAvatar = () => {
+        if (onClickAvatar){
+            onClickAvatar()
+        }
+    }
+
 
     // @ts-ignore
     // @ts-ignore
     return (
-        <div className="flex h-screen flex-row-reverse" onWheel={handleTabWheelEvent}>
-            <div className="relative flex-none  bg-gray-900 bg-opacity-50">
-                <div className="container flex justify-center items-center h-24">
+        <div className="relative h-screen " onWheel={handleTabWheelEvent}>
+            <div className="absolute inset-y-0 left-0 w-16 bg-gray-900 bg-opacity-50 ">
+                <div className="flex justify-center items-center h-24" onClick={handleAvatar}>
                     <Avatar
                         size="md"
                         alt="太极"
@@ -92,7 +101,7 @@ export default function Index(props: TabProps) {
                         <Tab key={id} label={name} className="w-12 h-16 text-white pl-0"/>
                     ))}
                 </Tabs>
-                <div className={"flex flex-col  h-max absolute inset-x-0 bottom-0"}>
+                {/* <div className={"flex flex-col  h-max absolute inset-x-0 bottom-0 "}>
                     <div
                         className={"w-full h-16 flex flex-col justify-center items-center"}
                     >
@@ -106,24 +115,23 @@ export default function Index(props: TabProps) {
                         <Cog6ToothIcon className={"w-8 h-8 text-white"} onClick={handleSetting}/>
                     </div>
                     <div className={"w-full h-5"}></div>
-                </div>
+                </div> */}
             </div>
 
-            <div className="flex flex-col mx-auto flex-1 h-full container justify-center items-center">
+            <div className="absolute inset-0 container mx-auto h-full justify-center items-center">
                 {data.map(({id, name, labels}) => (
                     <TabPanel key={id} value={value} index={id}>
                         <div
                             className={
-                                "flex h-full w-full"
-                            }
-                        >
+                                "flex h-full w-full "
+                            }>
                             <div ref={labelPanel}
-                                 className="grid md:grid-cols-12 sm:grid-cols-6 gap-0 mt-64 h-2/3 overflow-y-auto no-scrollbar"
+                                 className="grid md:grid-cols-12 sm:grid-cols-6 gap-0 mt-64 hmin-h-min	 overflow-y-auto no-scrollbar"
                                  onWheel={handleLabelWheelEvent}>
                                 {labels.map(({id, name: labelName, url}) => (
                                     <Label key={id} title={labelName} url={url} className={""}></Label>
                                 ))}
-                                <Label key={id} title={"添加"} url={"https://files.codelife.cc/icons/add.svg"}></Label>
+                                {/* <Label key={id} title={"添加"} url={"https://files.codelife.cc/icons/add.svg"}></Label> */}
                             </div>
 
                         </div>

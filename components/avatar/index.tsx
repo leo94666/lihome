@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { Avatar } from "@material-tailwind/react";
 import { useSession } from "next-auth/react";
-import Wechat from "@/components/wechat";
+import Wechat from "@/components/login";
 import Setting from "@/components/setting";
 
 type Props = {
