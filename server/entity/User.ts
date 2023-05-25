@@ -10,6 +10,4 @@ export class User {
         message: '密码长度最短不低于6位!',
     })
     password:string;
-
-    config:Config
 }

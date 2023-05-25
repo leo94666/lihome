@@ -7,13 +7,13 @@
 
 
 export enum Status {
-    Success=0,
-    NotFound=404,
+    Success = 0,
+    NotFound = 404,
     Error = 500,
-    Validate=1000
+    Validate = 1000
 }
 
-export class Result<T> {
+export interface Result<T> {
     code: number
     msg: string
     data?: T

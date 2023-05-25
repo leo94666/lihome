@@ -15,7 +15,7 @@ model Label {
   createdAt  DateTime  @default(now())
   name       String
   url        String
-  icon       string
+  icon       String
   category   Category? @relation(fields: [categoryId], references: [id])
   categoryId Int
 }
@@ -24,7 +24,7 @@ model Category {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   name      String   @unique
-  icon      string
+  icon      String
   labels    Label[]
   config    Config?  @relation(fields: [configId], references: [id])
   configId  Int

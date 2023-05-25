@@ -58,10 +58,6 @@ function Index(props: Props) {
         <Item id="setting" onClick={handleItemClick}>
           设置
         </Item>
-        {/*<Submenu label="Foobar">*/}
-        {/*    <Item id="reload" onClick={handleItemClick}>Reload</Item>*/}
-        {/*    <Item id="something" onClick={handleItemClick}>Do something else</Item>*/}
-        {/*</Submenu>*/}
       </Menu>
     </div>
   );
