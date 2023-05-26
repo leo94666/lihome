@@ -46,7 +46,7 @@ export default function Index(props: Props) {
   function handleClose(): void {}
 
   const [value, setValue] = React.useState("#ffffff");
-  const handleChange = (newValue) => {
+  const handleChange = (newValue:string) => {
     setValue(newValue);
   };
   return (
