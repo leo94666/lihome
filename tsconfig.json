@@ -32,7 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     "server/next-auth.d.ts"
-  ],
+, "components/colorpicker/index.jsx"  ],
   "exclude": [
     "node_modules"
   ],
